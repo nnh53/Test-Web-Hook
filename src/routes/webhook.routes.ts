@@ -3,6 +3,8 @@ import { Router } from 'express'
 const webhook = Router()
 
 webhook.get('/', (req, res) => {
+  console.log(req)
+
   const mode = req.query['hub.mode']
   const token = req.query['hub.verify_token']
   const challenge = req.query['hub.challenge']
@@ -19,7 +21,7 @@ webhook.get('/', (req, res) => {
       res.sendStatus(403)
     }
   }
-  res.json({ message: 'hello webhook' })
+  // res.json({ message: 'hello webhook' })
 })
 
 webhook.post('/', (req, res) => {})
